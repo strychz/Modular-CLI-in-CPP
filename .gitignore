@@ -1,0 +1,24 @@
+# Ignorar diretórios de build
+/build/
+/build*/
+
+# Ignorar arquivos e pastas do CMake
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/compile_commands.json
+
+# Ignorar arquivos do Ninja
+/*.ninja
+/.ninja_deps
+/.ninja_log
+
+# Ignorar arquivos temporários do VS Code
+.vscode/
+*.code-workspace
+
+# Ignorar arquivos temporários do sistema
+*.log
+*.tmp
+*.bak
+.DS_Store
