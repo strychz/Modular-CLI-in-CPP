@@ -1,47 +1,12 @@
 #include <CLI/CLI.hpp>
 #include <iostream>
 #include <nlohmann/json.hpp>
+#include "adicionar.hpp"
+#include "remover.hpp"
+#include "listar.hpp"
+#include "salvar.hpp"
 
 using namespace std;
-
-void adicionar_tarefa(const string & tarefa){
-    cout << "Sua(s) tarefa(s) foi/foram adicionada(s): " << tarefa << endl;
-/*Mostrará para o usuário que sua tarefa foi adicionada com sucesso;
-Para adicionar a lógica para salvar a tarefa em um arquivo ou banco de dados.*/
-}
-
-void remover_tarefa(const string & tarefa){
-    cout << "Removendo tarefa: " << tarefa << endl;
-
-/*Implementaria a lógica para remover a tarefa de um arquivo ou banco de dados. Entretanto, ainda não está configurada e ainda não foi inserida no objeto principal da interface*/
-}
-
-void listar_tarefas(const string & nome_arquivo){
-    cout << "Listando tarefa(s)..." << endl;
-    ifstream arquivo(nome_arquivo);
-    if (!arquivo) {
-        cout << "Nenhuma tarefa encontrada." << endl;
-        return;
-    }
-    nlohmann::json j;
-    arquivo >> j;
-    cout << "Tarefas salvas:" << endl;
-    cout << j.dump(4) << endl; 
-// Imprime o conteúdo do JSON formatado
-    arquivo.close();
-
-//Implementaria a lógica para ler as tarefas de um arquivo ou banco de dados e exibi-las.
-}
-
-void salvar_tarefas(const string & tarefa, const string & nome_arquivo) {
-    nlohmann::json j;
-    j["tarefa"] = tarefa;
-
-    ofstream arquivo(nome_arquivo);
-    arquivo << j.dump(4);
-    arquivo.close();
-
-}
 
 int main(int argc, char** argv){
     CLI::App app{"CLI Modular"};
@@ -58,6 +23,9 @@ Também adiciona a opção obrigatória chamada "tarefa" que o usuário deve for
     auto* list = app.add_subcommand("list", "Lista de todas as tarefas");
     list->add_option("-f, --file", nome_arquivo, "Nome do arquivo JSON")->required();
     //Cria subcomando "list" para listar todas as tarefas.
+
+    auto* rm = app.add_subcommand("rm", "Remove o que o usuário solicitar dentro do arquivo");
+    rm->add_option("-f, --file", nome_arquivo, "Nome do arquivo JSON")->required();
 
     CLI11_PARSE(app, argc, argv);
 
