@@ -4,8 +4,8 @@
 
 using namespace std;
 
-void remover_tarefa(const string & tarefa){
-    cout << "Removendo tarefa: " << tarefa << endl;
+void remover_tarefa(int id, const string & nome_arquivo){
+    cout << "Removendo tarefa: " << nome_arquivo << endl;
 
 /*Implementar a lógica para remover a tarefa de um arquivo ou banco de dados. Entretanto, ainda não está configurada e ainda não foi inserida no objeto principal da interface*/
 }

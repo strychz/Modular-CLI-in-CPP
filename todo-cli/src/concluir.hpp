@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void concluir(const string & titulo){
-    cout << "Modificada para concluída: " << titulo << endl;
+void concluir_tarefa(int id, const string & nome_arquivo){
+    cout << "Modificada para concluída: " << nome_arquivo << endl;
 /*Mostrará para o usuário que sua atividade foi concluída com sucesso;*/
 }
