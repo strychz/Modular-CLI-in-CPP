@@ -27,9 +27,9 @@ FetchContent_MakeAvailable(JSON)
 
 # Catch2
 FetchContent_Declare(
-    Catch2
+     Catch2
     GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-    GIT_TAG v3.6.0
+    GIT_TAG        v3.4.0 # ou versão mais recente estável
 )
 FetchContent_MakeAvailable(Catch2)
 
@@ -41,3 +41,7 @@ enable_testing()
 add_executable(tests tests/test_main.cpp)
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
 add_test(NAME all_tests COMMAND tests)
+
+add_executable(test_app tests/test_main.cpp)
+target_link_libraries(test_app Catch2::Catch2WithMain)
+target_include_directories(test_app PRIVATE include)

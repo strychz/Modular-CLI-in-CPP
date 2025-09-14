@@ -1,20 +1,20 @@
-#pragma once
-#include <string>
+#ifndef ITASKREPOSITORY_HPP
+#define ITASKREPOSITORY_HPP
+
 #include <vector>
 #include <optional>
-
-struct Task {
-    int id;
-    std::string title;
-    bool done = false;
-};
+#include "../models/Task.hpp"
 
 class ITaskRepository {
 public:
     virtual ~ITaskRepository() = default;
 
-    virtual Task create(const std::string& title) = 0;
-    virtual std::vector<Task> list(bool includeDone = true) = 0;
-    virtual std::optional<Task> markDone(int id) = 0;
-    virtual bool remove(int id) = 0;
+    virtual void addTask(const Task& task) = 0;
+    virtual bool removeTask(int taskId) = 0;
+    virtual std::optional<Task> getTaskById(int taskId) const = 0;
+    virtual std::vector<Task> getAllTasks() const = 0;
+    virtual bool updateTask(int taskId, const Task& updatedTask) = 0;
 };
+
+#endif  //ITASKREPOSITORY_HPP
+#ifndef ITASKREPOSITORY_HPP
